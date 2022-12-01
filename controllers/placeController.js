@@ -104,7 +104,7 @@ const {
       for (let i = 0; i < req.files.picture?.length; i++) {
         await PlacePic.create({
           picture: results[i],
-          user_id: req.member.id,
+          user_id: req.user.id,
           place_id: place.id,
         });
       }
@@ -286,7 +286,7 @@ const {
               await PlacePic.create({
                 picture: result.secure_url,
                 place_id: placeId,
-                user_id: req.member.id,
+                user_id: req.user.id,
               });
   
               i += 1;
@@ -373,7 +373,7 @@ const {
       if (!place) {
         createError("This place is not found", 400);
       }
-      if (req.member.id !== place.user_id) {
+      if (req.user.id !== place.user_id) {
         createError("You have no permission", 403);
       }
       if (placePic.picture) {

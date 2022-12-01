@@ -37,7 +37,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
 
 app.use('/auth',authRoute);
-app.use("/place", placeRoute);
+app.use("/place", authenticateMiddleware, placeRoute);
 
 
 app.use(notFoundMiddleware);
