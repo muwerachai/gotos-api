@@ -208,6 +208,7 @@ const {
       } = req.body;
       const place = await Place.findOne({ where: { id: placeId } });
       const placePic = await PlacePic.findAll({ where: { place_id: placeId } });
+      console.log(req)
       if (!place) {
         createError("This place is not found", 400);
       }

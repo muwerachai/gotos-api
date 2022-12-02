@@ -11,6 +11,7 @@ const authenticateMiddleware = require("./middlewares/authenticate");
 
 const authRoute = require('./routes/authRoute');
 const placeRoute = require('./routes/placeRoute');
+const profileRoute = require("./routes/profileRoute");
 
 const { addProvince } = require("./service/provinceService");
 const { addCategory } = require("./service/categoryService");
@@ -38,6 +39,7 @@ app.use(express.urlencoded({ extended: false}));
 
 app.use('/auth',authRoute);
 app.use("/place", authenticateMiddleware, placeRoute);
+app.use("/profile", authenticateMiddleware, profileRoute);
 
 
 app.use(notFoundMiddleware);
